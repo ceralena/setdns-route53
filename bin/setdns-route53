@@ -1,0 +1,48 @@
+#!/bin/bash
+# setdns-route53.sh
+# Requires HOSTED_ZONE_ID in the environment.
+IP=`dig @ns1.google.com -t txt o-o.myaddr.l.google.com +short | sed -e 's/"//g'`
+fqdn=`hostname -f`
+config=/etc/setdns-route53
+
+while read name zone; do
+
+	case "$name" in \#*) continue ;; esac
+
+	if [[ "$name" == "." ]]; then
+		fqdn=$zone
+	else
+		fqdn=$name.$zone
+	fi
+
+	read -r -d '' PAYLOAD <<EOF
+	{
+		"Changes": [
+			{
+				"Action": "UPSERT",
+				"ResourceRecordSet": {
+					"Name": "$fqdn",
+					"Type": "A",
+					"TTL": 300,
+					"ResourceRecords": [
+						{"Value": "$IP"}
+					]
+				}
+			}
+		]
+	}
+EOF
+
+	# figure out the hosted zone ID based on the zone name
+	hosted_zone_id=`aws --output text route53 list-hosted-zones | grep "$zone" | cut -f 3 | cut -d '/' -f 3`
+
+	OUTPUT=$(aws route53 change-resource-record-sets --change-batch "$PAYLOAD" --hosted-zone-id $hosted_zone_id)
+
+	if ! [ $? -eq 0 ]; then
+		echo $OUTPUT
+		exit 1
+	else
+		echo "DNS for $fqdn in $zone ($hosted_zone_id) set to $IP"
+	fi
+
+done < $config

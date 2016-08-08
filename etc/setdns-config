@@ -1,0 +1,11 @@
+# Config file for setdns-route53
+# Each entry in this file should be of the format:
+# NAME ZONE_NAME
+#
+# For example:
+#
+# jenkins	internal.myorg.org
+#
+#
+# There is one exception: if the first column is '.', it's assumed to indicate
+# the root record for the zone.

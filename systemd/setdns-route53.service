@@ -1,0 +1,6 @@
+[Unit]
+Description=sets route53 resource records based on config
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/setdns-route53.sh

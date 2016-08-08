@@ -1,0 +1,16 @@
+Source: setdns-route53
+Section: unknown
+Priority: optional
+Maintainer: Cera davies <ceralena.davies@gmail.com>
+Build-Depends: debhelper (>= 9)
+Standards-Version: 3.9.5
+Homepage: https://github.com/ceralena/setdns
+Vcs-Git: https://github.com/ceralena/setdns
+
+Package: setdns-route53
+Architecture: all
+Depends: dnsutils, python3
+Description: A script to set a route53 record with the host's hostname
+ This is a script which can set the host's hostname as a route53 record.
+ It assumes that it has an IAM role (or AWS keypair in the environment)
+ providing the appropriate permissions.
