@@ -1,6 +1,8 @@
 setdns-route53 (1.0.0) UNRELEASED; urgency=low
 
   [ Cera Davies ]
-  * First stub changelog entry
+  * [FEATURE] first commit: working script and debian package
+
+  [ Hark ]
 
  -- Cera Davies <ceralena.davies@gmail.com>  Sat, 06 Aug 2016 09:49:02 +0000
