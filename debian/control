@@ -9,7 +9,7 @@ Vcs-Git: https://github.com/ceralena/setdns
 
 Package: setdns-route53
 Architecture: all
-Depends: dnsutils, python3
+Depends: dnsutils
 Description: A script to set a route53 record with the host's hostname
  This is a script which can set the host's hostname as a route53 record.
  It assumes that it has an IAM role (or AWS keypair in the environment)
