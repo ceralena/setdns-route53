@@ -1,4 +1,14 @@
-setdns-route53 (1.0.0) UNRELEASED; urgency=low
+setdns-route53 (1.0.1) RELEASED; urgency=medium
+
+  [ Cera Davies ]
+  * [CLEANUP] Remove python3 from dependencies
+  * [CLEANUP] Make systemd unit files executable
+
+  [ Hark ]
+
+ -- Cera Davies <ceralena.davies@gmail.com>  Mon, 08 Aug 2016 12:12:26 +0000
+
+setdns-route53 (1.0.0) RELEASED; urgency=low
 
   [ Cera Davies ]
   * [FEATURE] first commit: working script and debian package
