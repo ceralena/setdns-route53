@@ -7,6 +7,8 @@ names in an AWS Route53 zone by name.
 may be useful for exposed services running on roaming machines, residential
 connections without a static IP, etc.
 
+It runs as a dedicated user, `setdns-route53`.
+
 ## Config
 
 `setdns-route53` reads its config from `/etc/setdns-route53`. See the comments
@@ -26,10 +28,10 @@ and then set an A record to its
 giving it the appropriate level of access in Route53.
 
 If there's no IAM role available (i.e. you're not running in AWS), you'll need
-to set these environment variables:
+to set up an `AWS_PROFILE` using the usual awscli conventions, and add it to the systemd unit file. For example:
 
-* `AWS_ACCESS_KEY_ID`
-* `AWS_SECRET_ACCESS_KEY`
+	[Service]
+	Environment=AWS_PROFILE=myprofile
 
 For IAM, the tool requires these permissions specifically for the zones it will
 mutate:
