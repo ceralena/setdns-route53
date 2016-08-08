@@ -1,0 +1,15 @@
+#!/bin/sh
+
+set -e
+
+case "$1" in
+    configure)
+        adduser --system --disabled-password --disabled-login --home /var/lib/setdns-route53 \
+        --quiet --force-badname --group setdns-route53
+
+        ;;
+esac
+
+#DEBHELPER#
+
+exit 0
