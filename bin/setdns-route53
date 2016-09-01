@@ -1,6 +1,5 @@
 #!/bin/bash
 # setdns-route53.sh
-# Requires HOSTED_ZONE_ID in the environment.
 IP=`dig @ns1.google.com -t txt o-o.myaddr.l.google.com +short | sed -e 's/"//g'`
 fqdn=`hostname -f`
 config=/etc/setdns-route53
