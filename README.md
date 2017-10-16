@@ -52,7 +52,6 @@ global permissions are only set for the `ListHostedZones` operation:
 	    "Version": "2012-10-17",
 	    "Statement": [
 		{
-		    "Sid": "setdns-zone-rw",
 		    "Effect": "Allow",
 		    "Action": [
 			"route53:ChangeResourceRecordSets",
@@ -64,7 +63,6 @@ global permissions are only set for the `ListHostedZones` operation:
 		    ]
 		},
 		{
-		    "Sid": "setdns-route53-list-zones",
 		    "Effect": "Allow",
 		    "Action": [
 			"route53:ListHostedZones"
